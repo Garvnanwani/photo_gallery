@@ -1,10 +1,24 @@
-import React from 'react';
-import './assests/css/style.css';
+import React, { useEffect, useState } from "react"
+import "./assests/css/style.css"
+import Images from "./components/Images"
 
 function App() {
-    return (
-        <div className="bg-gray-600 text-white padding-5" >Hello World</div>
-    )
+  const [title] = useState("Welcome To React")
+  const [isShowing, setIsShowing] = useState(false)
+
+  useEffect(() => {
+    console.log("App mounted")
+  }, [])
+
+  return (
+    <>
+      <div className="mx-auto w-full text-center my-4">
+        <div>{title}</div>
+        <button onClick={() => setIsShowing(!isShowing)}>Toggle Image</button>
+        {isShowing ? <Images /> : null}
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
